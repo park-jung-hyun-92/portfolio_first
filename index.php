@@ -1,3 +1,3 @@
 <?php
-	echo "git setting";
+	echo "git add test";
 ?>
