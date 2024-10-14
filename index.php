@@ -1,3 +1,3 @@
 <?php
-	echo "git add test2";
+	echo "git add test3";
 ?>
