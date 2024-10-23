@@ -1,5 +1,6 @@
 <?php 
 	include_once $_SERVER['DOCUMENT_ROOT'].'/inc/db_connect.php';
+	include_once $_SERVER['DOCUMENT_ROOT'].'/common/function.php';
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +18,7 @@
         <div class="row">
             <div class="col-12 top">
                 <h2>
-					<div class="menu"><a href="#"><img src="/img/logo.jpg" style="width:18%;"></a></div>
+					<div class="menu"><a href="/index.php"><img src="/img/logo.jpg" style="width:18%;"></a></div>
 					<div class="menu"><a href="/gallery/gallery.php">아우터</a></div>
 					<div class="menu"><a href="#">상의</a></div>
 					<div class="menu"><a href="#">하의</a></div>
@@ -27,7 +28,7 @@
 					<div class="menu"><a href="/notice/list.php">공지사항</a></div>
 					<div class="menu"><a href="#">로그인</a></div>			
 
-				</h1>
+				</h2>
             </div>
         </div>
     </div>
