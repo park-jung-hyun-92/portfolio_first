@@ -3,56 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>±€æ≤±‚ ∆˚</title>
+    <title>Í∏ÄÏì∞Í∏∞ Ìèº</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   
 </head>
 <body>
 
-    <!-- ±€æ≤±‚ ∆˚ -->
+    <!-- Í∏ÄÏì∞Í∏∞ Ìèº -->
     <div class="container write-form-container">
-        <h2>±€æ≤±‚</h2>
+        <h2>Í∏ÄÏì∞Í∏∞</h2>
         <form>
             <table class="table table-bordered table-form">
                 <tbody>
                     <tr>
-                        <th>¿€º∫¿⁄</th>
+                        <th>ÏûëÏÑ±Ïûê</th>
                         <td>
-                            <input type="text" class="form-control" id="author" placeholder="¿€º∫¿⁄ ¿Ã∏ß">
+                            <input type="text" class="form-control" id="author" placeholder="ÏûëÏÑ±Ïûê Ïù¥Î¶Ñ">
                         </td>
                     </tr>
                     <tr>
-                        <th>¡¶∏Ò</th>
+                        <th>Ï†úÎ™©</th>
                         <td>
-                            <input type="text" class="form-control" id="title" placeholder="±€ ¡¶∏Ò">
+                            <input type="text" class="form-control" id="title" placeholder="Í∏Ä Ï†úÎ™©">
                         </td>
                     </tr>
                     <tr>
-                        <th>¿Ã∏ﬁ¿œ</th>
+                        <th>Ïù¥Î©îÏùº</th>
                         <td>
-                            <input type="email" class="form-control" id="email" placeholder="¿Ã∏ﬁ¿œ ¡÷º“">
+                            <input type="email" class="form-control" id="email" placeholder="Ïù¥Î©îÏùº Ï£ºÏÜå">
                         </td>
                     </tr>
                     <tr>
-                        <th>√∑∫Œ∆ƒ¿œ</th>
+                        <th>Ï≤®Î∂ÄÌååÏùº</th>
                         <td>
                             <input type="file" class="form-control-file" id="file">
                         </td>
                     </tr>
                     <tr>
-                        <th>≥ªøÎ</th>
+                        <th>ÎÇ¥Ïö©</th>
                         <td>
-                            <textarea class="form-control" id="content" rows="5" placeholder="±€ ≥ªøÎ¿ª ¿‘∑¬«œººø‰"></textarea>
+                            <textarea class="form-control" id="content" rows="5" placeholder="Í∏Ä ÎÇ¥Ïö©ÏùÑ ÏûÖÎ†•ÌïòÏÑ∏Ïöî"></textarea>
                         </td>
                     </tr>
                 </tbody>
             </table>
 
-            <!-- ¡¶√‚ πˆ∆∞ -->
+            <!-- Ï†úÏ∂ú Î≤ÑÌäº -->
             <div class="text-center">
-                <button type="submit" class="btn btn-primary">±€ ¿€º∫</button>
-                <button type="reset" class="btn btn-secondary">√ ±‚»≠</button>
+                <button type="submit" class="btn btn-primary">Í∏Ä ÏûëÏÑ±</button>
+                <button type="reset" class="btn btn-secondary">Ï¥àÍ∏∞Ìôî</button>
             </div>
         </form>
     </div>

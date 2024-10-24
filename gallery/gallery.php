@@ -18,29 +18,14 @@
 	$list_start = $list_limit*($page-1); // 현재페이지 게시글 시작번호
 	$list_end = $page*$list_limit; // 현재페이지 게시글 끝번호
 	
-	$page_limit = 5; // 현재 페이지 수
-	$page_total = ceil($total_list / $list_limit); // 총 페이지 수
-	$page_start = ( ( floor( ($page - 1 ) / $page_limit ) ) * $page_limit ) + 1; // 현재 페이지 시작번호
-	$page_end = $page_start+$page_limit-1; // 현재 페이지 마지막번호
-	
-	// 이전페이지 세팅
-	$pre = ($page-1);
-	if($pre < 2){
-		$pre = 1;
-	}
-	// 다음페이지 세팅
-	$next = ($page+1);
-	if($next >= $page_total){
-		$next = $page_total;
-	}
-	
 	$sql = " SELECT * FROM gallery ORDER BY pd_date DESC limit ".$list_start." , ".$list_limit;
 	$result = mysqli_query($mysqli, $sql);
+	
+	$add_domain = "./gallery.php?page="; // 페이지 도메인 세팅
 ?>
 
     <!-- 갤러리 게시판 상품 리스트 -->
     <div class="container gallery-container">
-        <h3 style="margin-bottom:14px;">갤러리 리스트</h3>
         <div class="row">
 			<?php
 				while ($row = mysqli_fetch_assoc($result)){
@@ -61,39 +46,12 @@
 				}
 			?>
 		</div>	
-		
+			
 		<?php
-			$add_domain = "./gallery.php?page="; // 페이지 도메인 세팅
+			$rt = pagination($page, $total_list, $list_limit, 5, $add_domain); // 현재페이지, 총리스트 수, 한페이지에 보여줄 게시글 수, 한 블럭당 페이지 수, 페이지도메인
+			
+			echo $rt;
 		?>
-		
-		<!-- 페이지네이션 -->
-		<nav aria-label="Page navigation">
-			<ul class="pagination justify-content-center">
-				<li class="page-item">
-					<a class="page-link" href="<?php echo $add_domain; ?>1">처음</a>
-				</li>
-				<li class="page-item">
-					<a class="page-link" href="<?php echo $add_domain.$pre; ?>">이전</a>
-				</li>
-				<?php
-					for($i=$page_start; $i<=$page_end; $i++){
-						if($page == $i){
-							echo "<li class='page-item'><a class='page-link'>".$i."</a></span>";
-						}else if($i > $page_total){
-							continue;
-						}else{
-							echo "<li class='page-item'><a class='page-link' href='".$add_domain.$i."'>".$i."</a></span>";
-						}
-					}
-				?>
-				<li class="page-item">
-					<a class="page-link" href="<?php echo $add_domain.$next; ?>">다음</a>
-				</li>
-				<li class="page-item">
-					<a class="page-link" href="<?php echo $add_domain.$page_total; ?>">마지막</a>
-				</li>
-			</ul>
-		</nav>
     </div>
 
     <!-- Bootstrap JS -->

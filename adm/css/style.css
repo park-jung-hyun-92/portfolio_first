@@ -1,0 +1,86 @@
+<style>
+	.top {
+		background-color: #FFFF99;
+		color: #8C8C8C;
+		padding-top: 10px;
+		text-align: center;
+	}
+	.contents {
+		min-height: 400px;
+		padding: 20px;
+		background-color: #f8f9fa;
+	}
+	.footer {
+		background-color: #FFFF99;
+		color: #8C8C8C;
+		text-align: center;
+		padding-top: 16px;
+	}
+	.menu {
+		display: inline-block;
+		padding: 20px;
+		margin-right: 30px; /* 메뉴 간 간격 */
+	}
+	a {
+		color: inherit; /* 링크의 색상 제거 */
+		text-decoration: none; /* 링크의 밑줄 제거 */  
+	}
+	a:hover {
+		text-decoration: none; /* 링크의 밑줄 제거 */  
+	}
+	
+	.board-table {
+		margin-top: 30px;
+	}
+	.table thead th {
+		background-color: #007bff;
+		color: white;
+		text-align: center;
+	}
+	.table tbody td {
+		text-align: center;
+	}
+	
+	.write-form-container {
+		margin-top: 30px;
+	}
+	.table-form th {
+		width: 150px;
+		text-align: center;
+		background-color: #f8f9fa;
+	}
+	.table-form td {
+		padding: 10px;
+	}
+	
+	.gallery-container {
+		margin-top: 30px;
+		margin-bottom: 10px;
+	}
+	.card {
+		margin-bottom: 10px;
+	}
+	.card img {
+		width: 100%;
+		height: 160px;
+    /* object-fit: cover; */
+	}
+	.card-text {
+		font-size: 14px;
+		margin-bottom: 10px;
+	}
+	.price {
+		font-size: 14px;
+		font-weight: bold;
+		margin: 0px;
+	}
+	.pagination {
+		margin-top: 2px;
+		margin-bottom: 0px;
+	}
+	
+	
+	.notice_pagination {
+		margin-bottom: 10px;
+	}
+</style>
