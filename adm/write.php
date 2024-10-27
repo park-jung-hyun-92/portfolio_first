@@ -45,18 +45,14 @@
                         </td>
                     </tr>
 					
-					<?php 
-						for($i=1; $i<6; $i++){
-							echo "					
-								<tr>
-									<th>첨부파일".$i."</th>
-									<td>
-										<input type='file' class='form-control-file' id='file".$i."' name='file".$i."' >
-									</td>
-								</tr>
-							";
-						}
-					?>
+					<?php for($i=1; $i<6; $i++){ ?>
+						<tr>
+							<th>첨부파일<?php echo $i; ?></th>
+							<td>
+								<input type='file' class='form-control-file' id='pictures[]' name='pictures[]' />
+							</td>
+						</tr>
+					<?php } ?>
                 </tbody>
             </table>
 
