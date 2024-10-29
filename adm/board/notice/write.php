@@ -15,11 +15,9 @@
 
     <!-- 글쓰기 폼 -->
     <div class="container write-form-container">
-        <h2>글쓰기</h2>
         <form name="form_write" method="post" action="./write_ok.php" enctype="multipart/form-data">
             <table class="table table-bordered table-form">
                 <tbody>
-				
 					<tr>
                         <th>제목</th>
                         <td>
@@ -32,27 +30,12 @@
                             <textarea class="form-control" id="content" name="content" rows="5" placeholder="내용을 입력하세요" required></textarea>
                         </td>
                     </tr>
-					<tr>
-                        <th>가격</th>
-                        <td>
-                            <input type="number" class="form-control" id="price" name="price" placeholder="가격">
-                        </td>
-                    </tr>
                     <tr>
                         <th>작성자</th>
                         <td>
                             <input type="text" class="form-control" id="author" name="author" placeholder="작성자" required>
                         </td>
                     </tr>
-					
-					<?php for($i=1; $i<6; $i++){ ?>
-						<tr>
-							<th>첨부파일<?php echo $i; ?></th>
-							<td>
-								<input type='file' class='form-control-file' id='pictures[]' name='pictures[]' />
-							</td>
-						</tr>
-					<?php } ?>
                 </tbody>
             </table>
 

@@ -20,15 +20,16 @@
 		}
 		
 		$rt_pagination = '';
-		$rt_pagination .= "<nav aria-label='Page navigation'>
-			<ul class='pagination justify-content-center notice_pagination'>
-				<li class='page-item'>
-					<a class='page-link' href='".$add_domain."1'>처음</a>
-				</li>
-				<li class='page-item'>
-					<a class='page-link' href='".$add_domain.$pre."'>이전</a>
-				</li>
-			 ";
+		$rt_pagination .= "
+			<nav aria-label='Page navigation'>
+				<ul class='pagination justify-content-center notice_pagination'>
+					<li class='page-item'>
+						<a class='page-link' href='".$add_domain."1'>처음</a>
+					</li>
+					<li class='page-item'>
+						<a class='page-link' href='".$add_domain.$pre."'>이전</a>
+					</li>
+		";
 				
 		for($i=$page_start; $i<=$page_end; $i++){
 			if($page == $i){
@@ -40,14 +41,15 @@
 			}
 		}
 				
-		 $rt_pagination .= "<li class='page-item'>
-					<a class='page-link' href='".$add_domain.$next."'>다음</a>
-				</li>
-				<li class='page-item'>
-					<a class='page-link' href='".$add_domain.$page_total."'>마지막</a>
-				</li>
-			</ul>
-		</nav>
+		 $rt_pagination .= "
+					<li class='page-item'>
+						<a class='page-link' href='".$add_domain.$next."'>다음</a>
+					</li>
+					<li class='page-item'>
+						<a class='page-link' href='".$add_domain.$page_total."'>마지막</a>
+					</li>
+				</ul>
+			</nav>
 		";
 		
 		return $rt_pagination;
