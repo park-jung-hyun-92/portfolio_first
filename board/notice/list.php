@@ -72,7 +72,6 @@
 			
 			<?php
 				while ($row = mysqli_fetch_assoc($result)){
-					extract($row);
 			?>
 					<tr>
 						<td><a href="./view.php?<?php echo $add_domain; ?><?php echo $page; ?>&num=<?php echo $row['num']; ?>"><?php echo $list_num; ?></td>
@@ -88,7 +87,7 @@
         </table>
 		<form id="serch_form" method="get" action="./list.php" >
 			<div>
-				<input type="text" id="serch_text" name="serch_text" value="<?php echo $serch_text; ?>" placeholder="검색어를 입력해주세요.">
+				<input type="text" id="serch_text" name="serch_text" value="<?php echo $serch_text; ?>" placeholder="제목 또는 관리자를 검색해주세요.">
 				<input type="submit" id="search_btn" value="검색">
 			</div>
 		</form>

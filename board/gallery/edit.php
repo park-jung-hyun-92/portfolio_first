@@ -7,31 +7,57 @@
 	$page = $_POST['page'];
 	
 	
-	$sql = " SELECT * FROM notice WHERE num = ".$num;
-	$result = mysqli_query($mysqli, $sql);
-	$row = mysqli_fetch_assoc($result);
+	if($_POST['mode'] == ''){
+		$row_category = '2';
+	}
 	
-	$row_title = $row['title'];
-	$row_content = $row['content'];
-	$row_writer = $row['writer'];
+	if($_POST['mode'] == 'u'){
+		$sql = " SELECT * FROM gallery WHERE num = ".$num;
+		$result = mysqli_query($mysqli, $sql);
+		$row = mysqli_fetch_assoc($result);
+		
+		$row_category = $row['category'];
+		$row_title = $row['title'];
+		$row_content = $row['content'];
+		$row_writer = $row['writer'];
+		$row_price = $row['price'];
+	}
+
+	$sql = " SELECT * FROM gallery WHERE num = ".$num;
+		$result = mysqli_query($mysqli, $sql);
+		$row = mysqli_fetch_assoc($result);
+		
+		$row_category = $row['category'];
+		$row_title = $row['title'];
+		$row_content = $row['content'];
+		$row_writer = $row['writer'];
+		$row_price = $row['price'];
+	
+
+	
 ?>
 
 	<div class="container write-form-container">
-        <form name="form_view" method="post" action="./edit_ok.php" >
+        <form name="form_view" method="post" action="./edit_ok.php" enctype="multipart/form-data">
             <table class="table table-bordered table-form">
                 <tbody>
-<!-- 					<tr> -->
-<!--                         <th>카테고리</th> -->
-<!--                         <td style="text-align:left;"> -->
-<!-- 							<select name="select_val" style="text-align:center;" required> -->
-<!-- 								<option value="">=선택=</option> -->
-<!-- 								<option value="1">아우터</option> -->
-<!-- 								<option value="2">상의</option> -->
-<!-- 								<option value="3">하의</option> -->
-<!-- 								<option value="4">패션잡화</option> -->
-<!-- 							</select> -->
-<!--                         </td> -->
-<!--                     </tr> -->
+					<tr>
+                        <th>카테고리</th>
+                        <td style="text-align:left;">
+							<select name="select_val" style="text-align:center;" required>
+								<option value="" <?php echo ($row_category == '') ? 'selected' : ''; ?> >=선택=</option>
+								<?php foreach($cate as $key => $value) { ?>
+									<option value="<?php echo $key; ?>" <?php echo ($row_category == '1') ? 'selected' : ''; ?>><?php echo $value; ?></option>
+								<?php } ?>
+								
+								
+								<option value="1" <?php echo ($row_category == '1') ? 'selected' : ''; ?>>아우터</option>
+								<option value="2" <?php echo ($row_category == '2') ? 'selected' : ''; ?>>상의</option>
+								<option value="3" <?php echo ($row_category == '3') ? 'selected' : ''; ?>>하의</option>
+								<option value="4" <?php echo ($row_category == '4') ? 'selected' : ''; ?>>패션잡화</option>
+							</select>
+                        </td>
+                    </tr>
 					<tr>
                         <th>제목</th>
                         <td>
@@ -44,7 +70,6 @@
                             <textarea class="form-control" id="content" name="content" rows="5"><?php echo $row_content; ?></textarea>
                         </td>
                     </tr>
-					<!--
 					<tr>
                         <th>가격</th>
                         <td>
@@ -52,18 +77,21 @@
                         </td>
                     </tr>
                     <tr>
-					-->
                         <th>작성자</th>
                         <td>
                             <input type="text" class="form-control" id="writer" name="writer" value="<?php echo $row_writer; ?>">
                         </td>
                     </tr>
 					
-					<?php for($i=1; $i<6; $i++){ ?>
+					<?php for($i=1; $i<6; $i++){ 
+						$img = 'img'.$i; // "img1~5"라는 이름의 변수(DB 컬럼명)를 만듬
+						$row_img = $row[$img]; // $row['img5'] 값을 가져옴		
+					?>
 						<tr>
 							<th>첨부파일<?php echo $i; ?></th>
-							<td>
-								<input type='file' class='form-control-file' id='pictures[]' name='pictures[]' />
+							<td style="text-align:left;">
+								<input type='file' class='form-control-file' id='pictures[]' name='pictures[]'  value="<?php echo $row_img; ?>"  />
+								<?php echo $row_img; ?>&nbsp;&nbsp;<?php echo $row_img != '' ? '<input type="checkbox" name="check_val'.$i.'" value="y">&nbsp삭제' : ''; ?>
 							</td>
 						</tr>
 					<?php } ?>

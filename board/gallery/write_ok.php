@@ -15,7 +15,6 @@
 	foreach ($_FILES["pictures"]["error"] as $key => $error) { // $key는 인덱스이며, $error는 값임
 		$name = "";
 		if ($error == UPLOAD_ERR_OK) { // UPLOAD_ERR_OK 값은 0
-			$file_flag++;
 			$tmp_name = $_FILES["pictures"]["tmp_name"][$key];
 			$name = basename($_FILES["pictures"]["name"][$key]);
 			move_uploaded_file($tmp_name, "D:/xampp/portfolio_first/adm/data/".$name);
@@ -39,12 +38,12 @@
 	}
 	*/
 
-	$sql = " INSERT INTO notice (category, title, content, price, writer, cur_date, cur_ip ". $col .") VALUES ('$category', '$title', '$content', '$price', '$writer', now(), '$cur_ip' ". $val .")";
+	$sql = " INSERT INTO gallery (category, title, content, price, writer, cur_date, cur_ip ". $col .") VALUES ('$category', '$title', '$content', '$price', '$writer', now(), '$cur_ip' ". $val .")";
 
 	mysqli_query($mysqli, $sql);
 	
 	mysqli_close($mysqli);
 
-	echo "<script>location.href='/board/notice/notice.php';</script>";
+	echo "<script>location.href='/board/gallery/gallery.php';</script>";
 ?>
 

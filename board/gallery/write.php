@@ -1,33 +1,21 @@
 <?php 
 	include_once $_SERVER['DOCUMENT_ROOT'].'/inc/header.php';
-	
-	$num = $_GET['num'];
-	$page = $_GET['page'];
-	$serch_text = $_GET['serch_text'];
-	$select_align = $_GET['select_align'];
-
-	$sql = " SELECT * FROM notice WHERE num = ".$num;
-	$result = mysqli_query($mysqli, $sql);
-	$row = mysqli_fetch_assoc($result);
-	$row_title = $row['title'];
-	$row_content = $row['content'];
-	$row_writer = $row['writer'];
 ?>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>상세보기</title>
+    <title>글쓰기</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   
 </head>
 <body>
 
-    <!-- 상세보기 폼 -->
+    <!-- 글쓰기 폼 -->
     <div class="container write-form-container">
-        <form name="form_view" method="post" action="./edit.php" >
+        <form name="form_write" method="post" action="./write_ok.php" enctype="multipart/form-data">
             <table class="table table-bordered table-form">
                 <tbody>
 					<tr>
@@ -45,27 +33,25 @@
 					<tr>
                         <th>제목</th>
                         <td>
-                            <input type="text" class="form-control" id="title" name="title" value="<?php echo $row_title; ?>" disabled>
+                            <input type="text" class="form-control" id="title" name="title" placeholder="제목" required>
                         </td>
                     </tr>
 					<tr>
                         <th>내용</th>
                         <td>
-                            <textarea class="form-control" id="content" name="content" rows="5" disabled><?php echo $row_content; ?></textarea>
+                            <textarea class="form-control" id="content" name="content" rows="5" placeholder="내용을 입력하세요" required></textarea>
                         </td>
                     </tr>
-					<!--
 					<tr>
                         <th>가격</th>
                         <td>
-                            <input type="number" class="form-control" id="price" name="price" disabled>
+                            <input type="number" class="form-control" id="price" name="price" placeholder="가격">
                         </td>
                     </tr>
                     <tr>
-					-->
                         <th>작성자</th>
                         <td>
-                            <input type="text" class="form-control" id="author" name="author" value="<?php echo $row_writer; ?>" disabled>
+                            <input type="text" class="form-control" id="writer" name="writer" placeholder="작성자" required>
                         </td>
                     </tr>
 					
@@ -79,17 +65,11 @@
 					<?php } ?>
                 </tbody>
             </table>
-			
-			<div>
-				<input type="hidden" name="num" value="<?php echo $num; ?>">
-				<input type="hidden" name="serch_text" value="<?php echo $serch_text; ?>">
-				<input type="hidden" name="select_align" value="<?php echo $select_align; ?>">
-				<input type="hidden" name="page" value="<?php echo $page; ?>">
-			</div>
 
             <!-- 제출 버튼 -->
             <div class="text-center">
-                <button type="submit" class="btn btn-primary" id="btn_edit" name="mode" value="btn_edit">글 수정</button>
+                <button type="submit" class="btn btn-primary">글 작성</button>
+                <button type="reset" class="btn btn-secondary">초기화</button>
                 <button type="button" class="btn btn-secondary" id="btn_cancle">이전</button>
             </div>
         </form>

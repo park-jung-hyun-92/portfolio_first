@@ -18,18 +18,18 @@
         <form name="form_write" method="post" action="./write_ok.php" enctype="multipart/form-data">
             <table class="table table-bordered table-form">
                 <tbody>
-					<tr>
-                        <th>카테고리</th>
-                        <td style="text-align:left;">
-							<select name="select_val" style="text-align:center;" required>
-								<option value="">=선택=</option>
-								<option value="1">아우터</option>
-								<option value="2">상의</option>
-								<option value="3">하의</option>
-								<option value="4">패션잡화</option>
-							</select>
-                        </td>
-                    </tr>
+<!-- 					<tr> -->
+<!--                         <th>카테고리</th> -->
+<!--                         <td style="text-align:left;"> -->
+<!-- 							<select name="select_val" style="text-align:center;" required> -->
+<!-- 								<option value="">=선택=</option> -->
+<!-- 								<option value="1">아우터</option> -->
+<!-- 								<option value="2">상의</option> -->
+<!-- 								<option value="3">하의</option> -->
+<!-- 								<option value="4">패션잡화</option> -->
+<!-- 							</select> -->
+<!--                         </td> -->
+<!--                     </tr> -->
 					<tr>
                         <th>제목</th>
                         <td>
@@ -42,27 +42,27 @@
                             <textarea class="form-control" id="content" name="content" rows="5" placeholder="내용을 입력하세요" required></textarea>
                         </td>
                     </tr>
-					<tr>
-                        <th>가격</th>
-                        <td>
-                            <input type="number" class="form-control" id="price" name="price" placeholder="가격">
-                        </td>
-                    </tr>
+<!-- 					<tr> -->
+<!--                         <th>가격</th> -->
+<!--                         <td> -->
+<!--                             <input type="number" class="form-control" id="price" name="price" placeholder="가격"> -->
+<!--                         </td> -->
+<!--                     </tr> -->
                     <tr>
                         <th>작성자</th>
                         <td>
-                            <input type="text" class="form-control" id="author" name="author" placeholder="작성자" required>
+                            <input type="text" class="form-control" id="writer" name="writer" placeholder="작성자" required>
                         </td>
                     </tr>
 					
-					<?php for($i=1; $i<6; $i++){ ?>
-						<tr>
-							<th>첨부파일<?php echo $i; ?></th>
-							<td>
-								<input type='file' class='form-control-file' id='pictures[]' name='pictures[]' />
-							</td>
-						</tr>
-					<?php } ?>
+<!-- 					<?php for($i=1; $i<6; $i++){ ?> -->
+<!-- 						<tr> -->
+<!-- 							<th>첨부파일<?php echo $i; ?></th> -->
+<!-- 							<td> -->
+<!-- 								<input type='file' class='form-control-file' id='pictures[]' name='pictures[]' /> -->
+<!-- 							</td> -->
+<!-- 						</tr> -->
+<!-- 					<?php } ?> -->
                 </tbody>
             </table>
 

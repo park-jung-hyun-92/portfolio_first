@@ -3,4 +3,11 @@
 	
 	include_once $_SERVER['DOCUMENT_ROOT'].'/inc/db_connect.php';
 	include_once $_SERVER['DOCUMENT_ROOT'].'/inc/function.php';
+	
+	$cate = array(
+		"1" => "아우터",
+		"2" => "상의",
+		"3" => "하의",
+		"4" => "상의",
+	);
 ?>

@@ -6,12 +6,17 @@
 	$serch_text = $_GET['serch_text'];
 	$select_align = $_GET['select_align'];
 
-	$sql = " SELECT * FROM notice WHERE num = ".$num;
+	$sql = " SELECT * FROM gallery WHERE num = ".$num;
+	
 	$result = mysqli_query($mysqli, $sql);
 	$row = mysqli_fetch_assoc($result);
+	
+	$row_category = $row['category'];
 	$row_title = $row['title'];
 	$row_content = $row['content'];
+	$row_price = $row['price'];
 	$row_writer = $row['writer'];
+	
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -33,47 +38,60 @@
 					<tr>
                         <th>카테고리</th>
                         <td style="text-align:left;">
-							<select name="select_val" style="text-align:center;" required>
-								<option value="">=선택=</option>
-								<option value="1">아우터</option>
-								<option value="2">상의</option>
-								<option value="3">하의</option>
-								<option value="4">패션잡화</option>
-							</select>
+							<?php 
+								switch($row_category){
+									case '':
+										echo '';
+										break;
+									case '1':
+										echo '아우터';
+										break;
+									case '2':
+										echo '상의';
+										break;
+									case '3':
+										echo '하의';
+										break;
+									case '4':
+										echo '패션잡화';
+										break;
+								}
+							?>
                         </td>
                     </tr>
 					<tr>
                         <th>제목</th>
-                        <td>
-                            <input type="text" class="form-control" id="title" name="title" value="<?php echo $row_title; ?>" disabled>
+                        <td style="text-align:left;">
+                            <?php echo $row_title; ?>
                         </td>
                     </tr>
 					<tr>
                         <th>내용</th>
-                        <td>
-                            <textarea class="form-control" id="content" name="content" rows="5" disabled><?php echo $row_content; ?></textarea>
+                        <td style="text-align:left;">
+                            <?php echo $row_content; ?>
                         </td>
                     </tr>
-					<!--
 					<tr>
                         <th>가격</th>
-                        <td>
-                            <input type="number" class="form-control" id="price" name="price" disabled>
+                        <td style="text-align:left;">
+                            <?php echo $row_price; ?>
                         </td>
                     </tr>
                     <tr>
-					-->
                         <th>작성자</th>
-                        <td>
-                            <input type="text" class="form-control" id="author" name="author" value="<?php echo $row_writer; ?>" disabled>
+                        <td style="text-align:left;">
+                            <?php echo $row_writer; ?>
                         </td>
                     </tr>
 					
-					<?php for($i=1; $i<6; $i++){ ?>
+					<?php for($i=1; $i<6; $i++){ 
+						$img = 'img'.$i; // "img1~5"라는 이름의 변수(DB 컬럼명)를 만듬
+						$row_img = $row[$img]; // $row['img5'] 값을 가져옴	
+					?>
 						<tr>
 							<th>첨부파일<?php echo $i; ?></th>
-							<td>
-								<input type='file' class='form-control-file' id='pictures[]' name='pictures[]' />
+							<td style="text-align:left;">
+								<?php echo $row_img; ?>
 							</td>
 						</tr>
 					<?php } ?>
