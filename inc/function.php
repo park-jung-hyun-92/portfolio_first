@@ -1,5 +1,36 @@
 <?php
+
+	// 숫자 값 세팅 (값, 디폴트 값)
+	function number_val($cur_val, $default_val=''){
+		if(empty($cur_val) || !is_numeric($cur_val)){ // empty() : 0, null, '' 모두 false이므로 확실하게 판단 가능
+			$final_val = $default_val;
+		}else{
+			$final_val = $cur_val;
+		}
+		return $final_val;
+	}
 	
+	// 문자 값 세팅 (값, 디폴트 값)
+	function string_val($cur_val, $default_val=''){
+		
+		if(!isset($cur_val)){ 
+			$final_val = $default_val;
+		}else{
+			$final_val = $cur_val;
+		}
+		return $final_val;
+	}
+	
+	// GET 또는 POST 값 세팅
+	function get_post_val($param_val){
+		$cur_val = $_GET[$param_val];
+		if($cur_val == ""){
+			$cur_val = $_POST[$param_val];
+		}
+		return $cur_val;
+	}
+	
+	// 페이징 처리
 	function pagination ($page, $total_list, $list_limit, $page_limit, $add_domain){
 		global $mysqli; 
 		

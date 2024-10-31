@@ -1,12 +1,13 @@
 <?php 
 	include_once $_SERVER['DOCUMENT_ROOT'].'/common/common.php';
+	include_once $_SERVER['DOCUMENT_ROOT'].'/board/gallery/config.php';
 	
-	$category = $_POST['select_val'];
-	$title = $_POST['title'];
-	$content = $_POST['content'];
-	$price = $_POST['price'];
-	$writer = $_POST['writer'];
-	$cur_ip = $_SERVER['REMOTE_ADDR'];
+//	$category = $_POST['select_val'];
+//	$title = $_POST['title'];
+//	$content = $_POST['content'];
+//	$price = $_POST['price'];
+//	$writer = $_POST['writer'];
+//	$cur_ip = $_SERVER['REMOTE_ADDR'];
 
 	$i = 0;
 	$col = "";

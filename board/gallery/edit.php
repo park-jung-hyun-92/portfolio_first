@@ -1,39 +1,38 @@
 <?php 
 	include_once $_SERVER['DOCUMENT_ROOT'].'/inc/header.php';
+	include_once $_SERVER['DOCUMENT_ROOT'].'/board/gallery/config.php';
 
-	$num = $_POST['num'];
-	$serch_text = $_POST['serch_text'];
-	$select_align = $_POST['select_align'];
-	$page = $_POST['page'];
+//	$num = $_POST['num'];
+//	$serch_text = $_POST['serch_text'];
+//	$select_align = $_POST['select_align'];
+//	$page = $_POST['page'];
 	
 	
-	if($_POST['mode'] == ''){
-		$row_category = '2';
-	}
+//	if($_POST['mode'] == ''){
+//		$row_category = '2';
+//	}
 	
-	if($_POST['mode'] == 'u'){
-		$sql = " SELECT * FROM gallery WHERE num = ".$num;
-		$result = mysqli_query($mysqli, $sql);
-		$row = mysqli_fetch_assoc($result);
-		
-		$row_category = $row['category'];
-		$row_title = $row['title'];
-		$row_content = $row['content'];
-		$row_writer = $row['writer'];
-		$row_price = $row['price'];
-	}
+//	if($_POST['mode'] == 'u'){
+//		$sql = " SELECT * FROM gallery WHERE num = ".$num;
+//		$result = mysqli_query($mysqli, $sql);
+//		$row = mysqli_fetch_assoc($result);
+//		
+//		$row_category = $row['category'];
+//		$row_title = $row['title'];
+//		$row_content = $row['content'];
+//		$row_writer = $row['writer'];
+//		$row_price = $row['price'];
+//	}
 
 	$sql = " SELECT * FROM gallery WHERE num = ".$num;
-		$result = mysqli_query($mysqli, $sql);
-		$row = mysqli_fetch_assoc($result);
-		
-		$row_category = $row['category'];
-		$row_title = $row['title'];
-		$row_content = $row['content'];
-		$row_writer = $row['writer'];
-		$row_price = $row['price'];
+	$result = mysqli_query($mysqli, $sql);
+	$row = mysqli_fetch_assoc($result);
 	
-
+	$row_category = $row['category'];
+	$row_title = $row['title'];
+	$row_content = $row['content'];
+	$row_writer = $row['writer'];
+	$row_price = $row['price'];
 	
 ?>
 
@@ -47,14 +46,8 @@
 							<select name="select_val" style="text-align:center;" required>
 								<option value="" <?php echo ($row_category == '') ? 'selected' : ''; ?> >=선택=</option>
 								<?php foreach($cate as $key => $value) { ?>
-									<option value="<?php echo $key; ?>" <?php echo ($row_category == '1') ? 'selected' : ''; ?>><?php echo $value; ?></option>
+									<option value="<?php echo $key; ?>" <?php echo ($row_category == $key) ? 'selected' : ''; ?>><?php echo $value; ?></option>
 								<?php } ?>
-								
-								
-								<option value="1" <?php echo ($row_category == '1') ? 'selected' : ''; ?>>아우터</option>
-								<option value="2" <?php echo ($row_category == '2') ? 'selected' : ''; ?>>상의</option>
-								<option value="3" <?php echo ($row_category == '3') ? 'selected' : ''; ?>>하의</option>
-								<option value="4" <?php echo ($row_category == '4') ? 'selected' : ''; ?>>패션잡화</option>
 							</select>
                         </td>
                     </tr>

@@ -1,27 +1,18 @@
 <?php
 	include_once  $_SERVER['DOCUMENT_ROOT'].'/inc/header.php';
+	include_once $_SERVER['DOCUMENT_ROOT'].'/board/gallery/config.php';
 	
-	// 현재 페이지 셋팅
-	if(empty($_GET['page']) || !is_numeric($_GET['page'])){ // empty() : 0, null, '' 모두 false이므로 확실하게 판단 가능
-		$page = 1;
-	}else{
-		$page = $_GET['page'];
-	}
-	
-	// 정렬
-	if(isset($_GET['select_align'])){
-		$select_align = $_GET['select_align'];
-	} else {
-		$select_align = 'asc'; // 페이지 처음 들어왔을 때, 기본 값 세팅
-	}
-	
-	// 검색시 사용할 변수 선언
-	$serch_text = '';
-	
-	// 검색시 텍스트 값
-	if(isset($_GET['serch_text'])){
-		$serch_text = $_GET['serch_text']; // 검색을 한번 하게 되면, list 페이지 들어오면서 $serch_text 변수에 값을 세팅하고, 현재 값을 쿼리에서 각 컬럼의 값으로 사용
-	}
+//	// 현재 페이지 셋팅
+//	$page = cur_val($_GET['page'], 1, '1');
+//	
+//	// 정렬
+//	$select_align = cur_val($_GET['select_align']);
+//	echo $select_align;
+//	// 검색시 사용할 변수 선언
+//	$serch_text = '';
+//	
+//	// 검색시 텍스트 값
+//	$serch_text = cur_val($_GET['serch_text'], '', '2'); // 검색을 한번 하게 되면, list 페이지 들어오면서 $serch_text 변수에 값을 세팅하고, 현재 값을 쿼리에서 각 컬럼의 값으로 사용
 	
 	// 조건문 셋팅 (검색 포함)
 	$where = "WHERE 1=1";
@@ -44,7 +35,7 @@
 	$result = mysqli_query($mysqli, $sql);
 	
 	// 페이지 도메인 세팅
-	$add_domain = "serch_text=".$serch_text."&select_align=".$select_align."&page="; // $serch_text 값을 페이지 이동시 원하는 컬럼의 값으로 사용하면 됨
+	// $add_domain = "serch_text=".$serch_text."&select_align=".$select_align."&page="; // $serch_text 값을 페이지 이동시 원하는 컬럼의 값으로 사용하면 됨
 ?>
 
 	<!-- 게시판 리스트 정렬 -->

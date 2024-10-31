@@ -1,13 +1,13 @@
 <?php 
 	include_once $_SERVER['DOCUMENT_ROOT'].'/inc/header.php';
+	include_once $_SERVER['DOCUMENT_ROOT'].'/board/gallery/config.php';
 	
-	$num = $_GET['num'];
-	$page = $_GET['page'];
-	$serch_text = $_GET['serch_text'];
-	$select_align = $_GET['select_align'];
+//	$num = $_GET['num'];
+//	$page = $_GET['page'];
+//	$serch_text = $_GET['serch_text'];
+//	$select_align = $_GET['select_align'];
 
 	$sql = " SELECT * FROM gallery WHERE num = ".$num;
-	
 	$result = mysqli_query($mysqli, $sql);
 	$row = mysqli_fetch_assoc($result);
 	
@@ -26,37 +26,18 @@
     <title>상세보기</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  
 </head>
 <body>
 
     <!-- 상세보기 폼 -->
     <div class="container write-form-container">
-        <form name="form_view" method="post" action="./edit.php" >
+        <form name="form_view" method="get" action="./edit.php" >
             <table class="table table-bordered table-form">
                 <tbody>
 					<tr>
                         <th>카테고리</th>
                         <td style="text-align:left;">
-							<?php 
-								switch($row_category){
-									case '':
-										echo '';
-										break;
-									case '1':
-										echo '아우터';
-										break;
-									case '2':
-										echo '상의';
-										break;
-									case '3':
-										echo '하의';
-										break;
-									case '4':
-										echo '패션잡화';
-										break;
-								}
-							?>
+							<?php echo $cate[$row_category]; ?>
                         </td>
                     </tr>
 					<tr>
