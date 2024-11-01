@@ -2,11 +2,6 @@
 	include_once $_SERVER['DOCUMENT_ROOT'].'/inc/header.php';
 	include_once $_SERVER['DOCUMENT_ROOT'].'/board/gallery/config.php';
 	
-//	$num = $_GET['num'];
-//	$page = $_GET['page'];
-//	$serch_text = $_GET['serch_text'];
-//	$select_align = $_GET['select_align'];
-
 	$sql = " SELECT * FROM gallery WHERE num = ".$num;
 	$result = mysqli_query($mysqli, $sql);
 	$row = mysqli_fetch_assoc($result);
@@ -88,8 +83,8 @@
 
             <!-- 제출 버튼 -->
             <div class="text-center">
-                <button type="submit" class="btn btn-primary" id="btn_edit" name="mode" value="btn_edit">글 수정</button>
-                <button type="button" class="btn btn-secondary" id="btn_cancle">이전</button>
+                <button type="submit" class="btn btn-primary" id="btn_edit" name="mode" value="u">글 수정</button>
+                <button type="button" class="btn btn-secondary" id="btn_cancle">목록</button>
             </div>
         </form>
     </div>
@@ -97,7 +92,8 @@
 	<script>
 		// 이전페이지 이동
 		$('#btn_cancle').on('click', function() {
-			history.go(-1);
+			// history.go(-1);
+			
 		});
 	</script>
 

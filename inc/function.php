@@ -13,7 +13,7 @@
 	// 문자 값 세팅 (값, 디폴트 값)
 	function string_val($cur_val, $default_val=''){
 		
-		if(!isset($cur_val)){ 
+		if(empty($cur_val)){ 
 			$final_val = $default_val;
 		}else{
 			$final_val = $cur_val;
