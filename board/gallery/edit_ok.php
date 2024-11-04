@@ -4,13 +4,15 @@
 
 	$add_domain_page = $add_domain.$page;
 
-	if($_POST['mode'] == 'd'){		// 삭제일 때
-		
+	if($_GET['mode'] == 'd'){		// 삭제일 때
+
 		$sql = " DELETE FROM gallery WHERE num = ".$num;
 		mysqli_query($mysqli, $sql);
+		
 		mysqli_close($mysqli);
 		
 	}else if($_POST['mode'] == 'u'){ // 수정일 때
+		
 		$column_img = ""; // 초기화
 		$i = 0;
 		$j = 0;
@@ -61,8 +63,11 @@
 		
 		$sql = " UPDATE gallery SET category = '".$category."', title = '".$title."', content = '".$content."', price = '".$price."', writer = '".$writer."'".$col." WHERE num = ".$num;
 		$result = mysqli_query($mysqli, $sql);
+		
 		mysqli_close($mysqli);
+		
 	}else if($_POST['mode'] == 'w'){ // 글쓰기 일 때
+		
 		$a = 0;
 		$column = "";
 		$value = "";

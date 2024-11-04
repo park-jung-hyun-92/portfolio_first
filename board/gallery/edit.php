@@ -21,7 +21,7 @@
 ?>
 
 	<div class="container write-form-container">
-        <form name="form_view" method="post" action="./edit_ok.php" enctype="multipart/form-data">
+        <form id="form_view" name="form_view" method="post" action="./edit_ok.php" enctype="multipart/form-data">
             <table class="table table-bordered table-form">
                 <tbody>
 					<tr>
@@ -96,13 +96,13 @@
 			<input type="hidden" name="serch_text" value="<?php echo $serch_text; ?>">
 			<input type="hidden" name="select_align" value="<?php echo $select_align; ?>">
 			<input type="hidden" name="page" value="<?php echo $page; ?>">
+			<input type="hidden" name="mode" id="mode" value="">
 		</div>
 		
 		<!-- 제출 버튼 -->
 		<div class="text-center">
 			<?php if($_GET['mode'] == 'u'){ ?>
-				<button type="submit" class="btn btn-primary" id="u" name="mode" value="u">글 수정</button>
-				<button type="submit" class="btn btn-primary" id="d" name="mode" value="d">글 삭제</button>
+				<button type="button" class="btn btn-primary" id="u">글 수정</button>
 			<?php }else{ ?>
 				<button type="submit" class="btn btn-primary" id="w" name="mode" value="w">글 작성</button>
 			<?php } ?>
@@ -111,9 +111,18 @@
 	</form>
 
 	<script>
-		// 목록 버튼 클릭시 이전 페이지 이동
+		// 글 수정시 메세지 확인창
+		$('#u').on('click', function() {
+			if(confirm("해당 글을 수정하시겠습니까?")){
+				$('[name="mode"]').val('u');
+				$('#form_view').submit(); // jQuery를 사용하여 폼 전송
+			}
+		});
+		
+		// 목록 버튼 클릭시 목록으로 이동
 		$('#btn_cancle').on('click', function() {
-			history.go(-1);
+			location.href ="./gallery.php?<?= $add_domain; ?><?= $page; ?>";
+			// history.go(-1);
 		});
 	</script>
 

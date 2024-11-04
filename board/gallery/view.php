@@ -84,16 +84,24 @@
             <!-- 제출 버튼 -->
             <div class="text-center">
                 <button type="submit" class="btn btn-primary" id="btn_edit" name="mode" value="u">글 수정</button>
+				<button type="button" class="btn btn-primary" id="d">글 삭제</button>
                 <button type="button" class="btn btn-secondary" id="btn_cancle">목록</button>
             </div>
         </form>
     </div>
 	
 	<script>
-		// 이전페이지 이동
+		// 삭제 기능
+		$('#d').on('click', function() {
+			if(confirm("해당 글을 삭제하시겠습니까?")){
+				location.href ="./edit_ok.php?mode=d&num=<?= $num; ?>";
+			}
+		});
+		
+		// 목록 버튼 클릭시 목록으로 이동
 		$('#btn_cancle').on('click', function() {
-			// history.go(-1);
-			
+			location.href ="./gallery.php?<?= $add_domain; ?><?= $page; ?>";
+			// history.go(-1);				
 		});
 	</script>
 
