@@ -56,7 +56,7 @@
 								<input type="hidden" name="list_num" value="<?php echo $list_num ?>">
 								<h5 class="card-title"><a href="./view.php?<?php echo $add_domain; ?><?php echo $page; ?>&num=<?php echo $row['num']; ?>"><?php echo $row['title']; ?></a></h5>
 								<p class="card-text"><?php echo $row['content']; ?></p>
-								<p class="price"><?php echo $row['price']; ?></p>
+								<p class="price"><?php echo number_format($row['price']); ?></p>
 							</div>
 						</div>
 					</div>

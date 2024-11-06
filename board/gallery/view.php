@@ -50,7 +50,7 @@
 					<tr>
                         <th>가격</th>
                         <td style="text-align:left;">
-                            <?php echo $row_price; ?>
+                            <?php echo number_format($row_price); ?>
                         </td>
                     </tr>
                     <tr>
