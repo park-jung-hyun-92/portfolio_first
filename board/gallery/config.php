@@ -1,4 +1,11 @@
 <?php
+	
+	// 헤더 메뉴 값 세팅
+	$get_cate = $_GET['cate'];
+	if($get_cate == '아우터'){  $get_cate = 1; }
+	if($get_cate == '상의'){  $get_cate = 2; }
+	if($get_cate == '하의'){  $get_cate = 3; }
+	if($get_cate == '패션잡화'){  $get_cate = 4; }
 
 	// 현재 페이지 값 세팅
 	$cur_page = get_post_val('page');
@@ -27,6 +34,6 @@
 	$cur_ip = $_SERVER['REMOTE_ADDR'];
 	
 	// 현재 페이지 도메인 값 세팅
-	$add_domain = "serch_text=".$serch_text."&select_align=".$select_align."&page=";
+	$add_domain = "serch_text=".$serch_text."&select_align=".$select_align."&cate=".$get_cate."&page=";
 
 ?>

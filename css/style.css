@@ -28,11 +28,20 @@
 	}
 	
 	.top {
-		background-color: #FFFF99;
 		color: #8C8C8C;
+		background-color: #FFFF99;
 		padding-top: 10px;
 		text-align: center;
 	}
+	.menu {
+		display: inline-block;
+		padding: 20px;
+		margin-right: 30px; /* 메뉴 간 간격 */
+	}
+	.menu a {
+		text-decoration: none; /* 링크의 밑줄 제거 */  
+	}
+	
 	.contents {
 		min-height: 400px;
 		padding: 20px;
@@ -44,17 +53,9 @@
 		text-align: center;
 		padding-top: 16px;
 	}
-	.menu {
-		display: inline-block;
-		padding: 20px;
-		margin-right: 30px; /* 메뉴 간 간격 */
-	}
-	a {
-		color: inherit; /* 링크의 색상 제거 */
-		text-decoration: none; /* 링크의 밑줄 제거 */  
-	}
+
 	a:hover {
-		text-decoration: none; /* 링크의 밑줄 제거 */  
+		text-decoration:none !important /* 마우스 오버시 링크의 밑줄 제거 */  
 	}
 	
 	.board-table {
@@ -85,7 +86,6 @@
 		margin-top: 30px;
 		margin-bottom: 10px;
 	}
-	
 	.card {
 		margin-bottom: 10px;
 	}
@@ -102,6 +102,9 @@
 		font-size: 14px;
 		font-weight: bold;
 		margin: 0px;
+	}
+	.view_file a{
+		color: black;
 	}
 	.pagination {
 		margin-top: 2px;

@@ -8,7 +8,8 @@
     if($serch_text != ''){
         $where .= ' AND title LIKE "%'.$serch_text.'%" ';
     }
-
+	
+	// 헤더 메뉴 카테고리 별로 리스트 셋팅
     $sql = " SELECT count(*) as total_cnt FROM gallery ".$where;
     $result = mysqli_query($mysqli, $sql);
     $row = mysqli_fetch_assoc($result);
@@ -19,7 +20,7 @@
     $list_start = $list_limit*($page-1); // 현재 페이지 게시글 시작 번호
     $list_end = $page*$list_limit; // 현재 페이지 게시글 끝 번호
 
-    $sql = " SELECT * FROM gallery ".$where." ORDER BY cur_date ".$select_align." limit ".$list_start." , ".$list_limit;
+    $sql = " SELECT * FROM gallery ".$where." AND category = ".$get_cate." ORDER BY cur_date ".$select_align." limit ".$list_start." , ".$list_limit;
     $result = mysqli_query($mysqli, $sql);
 	
 ?>
@@ -41,28 +42,28 @@
 				<div class="form-group">
 					<input type="text" id="serch_text" name="serch_text" class="form-control" style="width:196px;" value="<?php echo $serch_text; ?>" placeholder="제목을 검색해주세요.">
 					<button type="submit" id="search_btn" class="btn btn-primary">검색</button>
+					<input type="hidden" name="cate" value="<?php echo $get_cate ?>">
 				</div>
 			</form>
 		</div>
 
 
 		<!-- 갤러리 게시판 상품 리스트 -->
-			<div class="row">
-				<?php while ($row = mysqli_fetch_assoc($result)) { ?>
-					<div class="col-lg-3 col-md-4 col-sm-6">
-						<div class="card">
-							<img src="/img/<?php echo $row['img1']; ?>" class="card-img-top">
-							<div class="card-body" style="padding: 1.2rem;">
-								<input type="hidden" name="list_num" value="<?php echo $list_num ?>">
-								<h5 class="card-title"><a href="./view.php?<?php echo $add_domain; ?><?php echo $page; ?>&num=<?php echo $row['num']; ?>"><?php echo $row['title']; ?></a></h5>
-								<p class="card-text"><?php echo $row['content']; ?></p>
-								<p class="price"><?php echo number_format($row['price']); ?></p>
-							</div>
+		<div class="row">
+			<?php while ($row = mysqli_fetch_assoc($result)) { ?>
+				<div class="col-lg-3 col-md-4 col-sm-6">
+					<div class="card">
+						<img src="/img/<?php echo $row['img1']; ?>" class="card-img-top">
+						<div class="card-body" style="padding: 1.2rem;">
+							<input type="hidden" name="list_num" value="<?php echo $list_num ?>">
+							<h5 class="card-title"><a href="./view.php?<?php echo $add_domain; ?><?php echo $page; ?>&num=<?php echo $row['num']; ?>"><?php echo $row['title']; ?></a></h5>
+							<p class="card-text"><?php echo $row['content']; ?></p>
+							<p class="price"><?php echo number_format($row['price']); ?></p>
 						</div>
 					</div>
-					<?php $list_num--; ?>
-				<?php } ?>
-			</div>
+				</div>
+			<?php $list_num--; } ?>
+		</div>
 	
 
 		<!-- 페이지네이션과 글쓰기 버튼 -->
@@ -90,7 +91,7 @@
 			
 			// 글쓰기 페이지 이동
 			$('#write_btn').on('click', function() {
-				window.location.href = "./edit.php?mode=w";
+				window.location.href = "./edit.php?mode=w&cate=<?php echo $get_cate; ?>";
 			});
 		</script>
 

@@ -96,6 +96,7 @@
 			<input type="hidden" name="serch_text" value="<?php echo $serch_text; ?>">
 			<input type="hidden" name="select_align" value="<?php echo $select_align; ?>">
 			<input type="hidden" name="page" value="<?php echo $page; ?>">
+			<input type="hidden" name="cate" value="<?php echo $get_cate; ?>">
 			<input type="hidden" name="mode" id="mode" value="">
 		</div>
 		

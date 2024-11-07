@@ -66,8 +66,8 @@
 					?>
 						<tr>
 							<th>첨부파일<?php echo $i; ?></th>
-							<td style="text-align:left;">
-								<?php echo $row_img; ?>
+							<td class="view_file" style="text-align:left;">
+								<a href="./download.php?filename=<?php echo $row_img; ?>"><?php echo $row_img; ?></a>
 							</td>
 						</tr>
 					<?php } ?>
@@ -79,6 +79,7 @@
 				<input type="hidden" name="serch_text" value="<?php echo $serch_text; ?>">
 				<input type="hidden" name="select_align" value="<?php echo $select_align; ?>">
 				<input type="hidden" name="page" value="<?php echo $page; ?>">
+				<input type="hidden" name="cate" value="<?php echo $get_cate; ?>">
 			</div>
 
             <!-- 제출 버튼 -->
@@ -105,10 +106,6 @@
 		});
 	</script>
 
-    <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
 
