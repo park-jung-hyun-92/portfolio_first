@@ -32,7 +32,7 @@
 					<div class="menu"><a href="#">FAQ</a></div>
 					<div class="menu"><a href="/board/notice/list.php">공지사항</a></div>
 					<div class="menu"><a href="#">로그인</a></div>			
-
+					<div class="menu"><a href="/board/join/join.php">회원가입</a></div>			
 				</h2>
             </div>
         </div>

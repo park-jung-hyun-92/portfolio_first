@@ -62,10 +62,10 @@
 				while ($row = mysqli_fetch_assoc($result)){
 			?>
 					<tr>
-						<td><a href="./view.php?<?php echo $add_domain; ?><?php echo $page; ?>&num=<?php echo $row['num']; ?>"><?php echo $list_num; ?></td>
-						<td><a href="./view.php?<?php echo $add_domain; ?><?php echo $page; ?>&num=<?php echo $row['num']; ?>"><?php echo $row['title']; ?></a></td>
-						<td><a href="./view.php?<?php echo $add_domain; ?><?php echo $page; ?>&num=<?php echo $row['num']; ?>"><?php echo $row['writer']; ?></td>
-						<td><a href="./view.php?<?php echo $add_domain; ?><?php echo $page; ?>&num=<?php echo $row['num']; ?>"><?php echo $row['cur_date']; ?></td>
+						<td style="text-align:center;"><a href="./view.php?<?php echo $add_domain; ?><?php echo $page; ?>&num=<?php echo $row['num']; ?>"><?php echo $list_num; ?></td>
+						<td style="text-align:center;"><a href="./view.php?<?php echo $add_domain; ?><?php echo $page; ?>&num=<?php echo $row['num']; ?>"><?php echo $row['title']; ?></a></td>
+						<td style="text-align:center;"><a href="./view.php?<?php echo $add_domain; ?><?php echo $page; ?>&num=<?php echo $row['num']; ?>"><?php echo $row['writer']; ?></td>
+						<td style="text-align:center;"><a href="./view.php?<?php echo $add_domain; ?><?php echo $page; ?>&num=<?php echo $row['num']; ?>"><?php echo $row['cur_date']; ?></td>
 					</tr>
 			<?php 
 					$list_num--;
