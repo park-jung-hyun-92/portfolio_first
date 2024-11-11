@@ -1,5 +1,6 @@
 <?php
-    include_once $_SERVER['DOCUMENT_ROOT'].'/inc/header.php';
+     include_once $_SERVER['DOCUMENT_ROOT'].'/inc/header.php';
+    include_once $_SERVER['DOCUMENT_ROOT'].'/board/join/config.php';
 ?>
 
 	<div class="container write-form-container">
@@ -58,7 +59,7 @@
 					<tr>
 						<th>주소</th>
 						<td>
-							<input type="text" class="form-control" id="address" name="address" placeholder="주소를 입력해주세요" required>
+							<input type="text" class="form-control" id="addr" name="addr" placeholder="주소를 입력해주세요" required>
 						</td>
 					</tr>
 					<tr>
@@ -75,8 +76,8 @@
 							<input type="checkbox" class="essential">&nbsp;&nbsp;[필수] 이용약관 동의<br>
 							<input type="checkbox" class="essential">&nbsp;&nbsp;[필수] 개인정보 수집 및 이용 동의<br>
 							<input type="checkbox" id="choiceAll">&nbsp;&nbsp;[선택] 정보 수신 동의<br>
-							<input type="checkbox" class="checkbox" name="agree_sms" value="Y">&nbsp;SMS&nbsp;&nbsp;
-							<input type="checkbox" class="checkbox" name="agree_email" value="Y">&nbsp;이메일
+							<input type="checkbox" class="checkbox" name="agree_sms" value="">&nbsp;SMS&nbsp;&nbsp;
+							<input type="checkbox" class="checkbox" name="agree_email" value="">&nbsp;이메일
 						</td>
 					</tr>
 				</tbody>
@@ -96,7 +97,7 @@
             $('#id_check').click(function() {
 				var id_val = $('#id').val(); // 아이디 입력란에 입력한 값
 
-				if(id.value.trim() === ''){
+				if(id_val.trim() === ''){
 					alert('아이디를 입력해주세요.');
 					return false;
 				}
@@ -120,16 +121,19 @@
 
 		// 회원가입 목록 입력 필수 체크
 		const btn_submit = document.getElementById('btn_submit');
+		
 		btn_submit.addEventListener('click', () => {
+			var pw = $('#pw').val();
+            var pw_check = $('#pw_check').val();
 			var agree_essential = new Array();
 			agree_essential = document.getElementsByClassName('essential');
 			var agree_checkbox = new Array();
 			agree_checkbox = document.getElementsByClassName('checkbox');
 
 			// 비밀번호 값과 비밀번호확인 값 일치 여부
-			if(password.value != password_check.value){
+			if(pw.value != pw_check.value){
 				alert("비밀번호와 비밀번호확인 값이 서로 일치하지 않습니다.\n다시 확인해주세요.");
-				password.focus();
+				pw.focus();
 				return false;
 			}
 
@@ -181,7 +185,7 @@
 
 		// 취소 버튼 클릭시 로그인 페이지로 이동
 		$('#btn_cancle').on('click', function() {
-			window.location.href = '/project2/login/login.php';
+			window.location.href = '/index.php';
 		});
 	</script>
 
