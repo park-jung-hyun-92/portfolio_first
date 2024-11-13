@@ -4,7 +4,7 @@
 ?>
 
 	<div class="container write-form-container">
-		<form id="form_view" name="form_view" method="post" action="./edit_ok.php" enctype="multipart/form-data">
+		<form id="form_join" name="form_join" method="post" action="./join_ok.php" onsubmit="return submit_check();">
 			<table class="table table-bordered table-form">
 				<tbody>
 					<tr>
@@ -15,7 +15,7 @@
 								<span id="id_check" class="ml-2" style="background-color:black; border:1px solid gray; font-size:14px; color:white; padding:2px 8px; border-radius:5px; cursor:pointer;">
 									중복확인
 								</span>
-								<span id="id_check_val" style="display:block; margin-left:10px;">11</span>
+								<span id="id_check_val" style="display:block; margin-left:10px;"></span>
 							</div>
 						</td>
 					</tr>
@@ -83,7 +83,7 @@
 				</tbody>
 			</table>
 			<div class="text-center">
-				<button type="button" class="btn btn-primary" id="btn_submit">회원가입</button>
+				<button type="submit" class="btn btn-primary" id="btn_submit">회원가입</button>
 				<input type="button" class="btn btn-primary" id="btn_cancel" value="취소">
 			</div>
 		</form>
@@ -102,29 +102,31 @@
 					return false;
 				}
 
-                $.ajax({
+               $.ajax({
                     url: './id_check.php', // 요청을 보낼 서버의 URL
                     type: 'POST', // 요청 방식 (GET, POST, PUT, DELETE 등)
-					data: { id: id_val }, // 전송할 데이터 (키-값 쌍)
+					data: { 
+						id: id_val,
+					}, // 전송할 데이터 (키-값 쌍)
                     dataType: 'json', // 서버에서 반환받을 데이터 형식 (json, xml, html, text 등)
                     success: function(response) { // 요청이 성공했을 때 실행할 콜백 함수
                         // 서버로부터 받은 데이터를 처리
+						console.log(response);
                         $('#id_check_val').html(response.message); // ok 페이지에서 객체로 반환되서 그냥 response를 사용했지만, 다른 형식으로 반환시에는 JSON.stringify(response) 써야 함
 						id_hidden_value = id_val;
                     },
                     error: function(xhr, status, error) { // 요청이 실패했을 때 실행할 콜백 함수
                         $('#id_check_val').html(error);
                     }
-                });
+                });				
             });
         });
 
 		// 회원가입 목록 입력 필수 체크
-		const btn_submit = document.getElementById('btn_submit');
-		
-		btn_submit.addEventListener('click', () => {
-			var pw = $('#pw').val();
-            var pw_check = $('#pw_check').val();
+		function submit_check(){
+			var id = document.getElementById('id');
+			var pw = document.getElementById('pw');
+            var pw_check = document.getElementById('pw_check');
 			var agree_essential = new Array();
 			agree_essential = document.getElementsByClassName('essential');
 			var agree_checkbox = new Array();
@@ -148,9 +150,42 @@
 				alert("중복확인 버튼을 눌러주세요.");
 				return false;
 			}
-
-			document.getElementById('form_join').submit();
-		});
+			
+			return true;
+		}
+		
+		// ** 회원가입 목록 입력 필수 체크 또 다른 방법 **
+		//     ** 단, 코드로 강제 submit 하는 경우에는 html require 작동 안함 **
+		//		const btn_submit = document.getElementById('btn_submit');		
+		//		btn_submit.addEventListener('click', () => {
+		//			var pw = $('#pw').val();
+		//          var pw_check = $('#pw_check').val();
+		//			var agree_essential = new Array();
+		//			agree_essential = document.getElementsByClassName('essential');
+		//			var agree_checkbox = new Array();
+		//			agree_checkbox = document.getElementsByClassName('checkbox');
+		//
+		//			// 비밀번호 값과 비밀번호확인 값 일치 여부
+		//			if(pw != pw_check){
+		//				alert("비밀번호와 비밀번호확인 값이 서로 일치하지 않습니다.\n다시 확인해주세요.");
+		//				pw.focus();
+		//				return false;
+		//			}
+		//
+		//			// 이용약관 및 정보수집 필수 동의 여부 체크
+		//			if(!agree_essential[0].checked || !agree_essential[1].checked){
+		//				alert("2개의 필수 동의를 체크해주세요.");
+		//				return false;
+		//			}
+		//
+		//			// 중복체크한 id 값과 회원가입시 id 값 일치 여부
+		//			if(id_hidden_value !== id.value){
+		//				alert("중복확인 버튼을 눌러주세요.");
+		//				return false;
+		//			}
+		//
+		//			document.getElementById('form_join').submit();
+		//		});
 
 		// 체크박스 기능들
 		// $('input.checkbox[value="20"]'); // .checkbox인 모든 input 요소 중 value가 20인 것
