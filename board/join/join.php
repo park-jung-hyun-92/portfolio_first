@@ -1,5 +1,5 @@
 <?php
-     include_once $_SERVER['DOCUMENT_ROOT'].'/inc/header.php';
+    include_once $_SERVER['DOCUMENT_ROOT'].'/inc/header.php';
     include_once $_SERVER['DOCUMENT_ROOT'].'/board/join/config.php';
 ?>
 
@@ -46,7 +46,7 @@
 					<tr>
 						<th>성별</th>
 						<td>
-							<input type="radio" id="man" name="gender" value="남"> 남&nbsp;&nbsp;&nbsp;
+							<input type="radio" id="man" name="gender" value="남" checked> 남&nbsp;&nbsp;&nbsp;
 							<input type="radio" id="woman" name="gender" value="여"> 여
 						</td>
 					</tr>
@@ -59,7 +59,26 @@
 					<tr>
 						<th>주소</th>
 						<td>
-							<input type="text" class="form-control" id="addr" name="addr" placeholder="주소를 입력해주세요" required>
+							<!-- 팝업창 방법 우편번호 검색
+							<input type="text" id="sample6_postcode" name="sample6_postcode" placeholder="우편번호" required>
+							<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+							<input type="text" id="sample6_address" name="sample6_address" placeholder="주소" required><br>
+							<input type="text" id="sample6_detailAddress" name="sample6_detailAddress" placeholder="상세주소">
+							<input type="text" id="sample6_extraAddress" name="sample6_extraAddress" placeholder="참고항목">
+							-->
+							
+							<!-- iframe 방법 우편번호 검색 -->
+							<input type="text" id="sample6_postcode" name="sample6_postcode" placeholder="우편번호">
+							<input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기"><br>
+							
+							<!-- iframe 방법 우편번호 검색 반환 창 -->
+							<div id="layer" style="display:none; position:fixed; overflow:hidden; z-index:1; -webkit-overflow-scrolling:touch;">
+								<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
+							</div>
+							
+							<input type="text" id="sample6_address" name="sample6_address" placeholder="주소"><br>
+							<input type="text" id="sample6_detailAddress" name="sample6_detailAddress" placeholder="상세주소">
+							<input type="text" id="sample6_extraAddress" name="sample6_extraAddress" placeholder="참고항목">
 						</td>
 					</tr>
 					<tr>
@@ -76,12 +95,13 @@
 							<input type="checkbox" class="essential">&nbsp;&nbsp;[필수] 이용약관 동의<br>
 							<input type="checkbox" class="essential">&nbsp;&nbsp;[필수] 개인정보 수집 및 이용 동의<br>
 							<input type="checkbox" id="choiceAll">&nbsp;&nbsp;[선택] 정보 수신 동의<br>
-							<input type="checkbox" class="checkbox" name="agree_sms" value="">&nbsp;SMS&nbsp;&nbsp;
-							<input type="checkbox" class="checkbox" name="agree_email" value="">&nbsp;이메일
+							<input type="checkbox" class="checkbox" name="agree_sms" value="Y">&nbsp;SMS&nbsp;&nbsp; <!-- 체크박스는 value를 설정하지 않으면, 값 인식을 못하므로 기본 값을 무조건 설정해줘야 $_POST 값을 받을 수 있음 -->
+							<input type="checkbox" class="checkbox" name="agree_email" value="Y">&nbsp;이메일
 						</td>
 					</tr>
 				</tbody>
 			</table>
+
 			<div class="text-center">
 				<button type="submit" class="btn btn-primary" id="btn_submit">회원가입</button>
 				<input type="button" class="btn btn-primary" id="btn_cancel" value="취소">
@@ -121,7 +141,7 @@
                 });				
             });
         });
-
+		
 		// 회원가입 목록 입력 필수 체크
 		function submit_check(){
 			var id = document.getElementById('id');
@@ -225,5 +245,7 @@
 	</script>
 
 <?php
+    include_once $_SERVER['DOCUMENT_ROOT'].'/board/join/addr_serch.php';
+	
     include_once $_SERVER['DOCUMENT_ROOT'].'/inc/footer.php';
 ?>

@@ -72,8 +72,9 @@
 	}
 	.table-form th {
 		width: 150px;
-		text-align: center;
 		background-color: #f8f9fa;
+		vertical-align: middle !important;
+		text-align: center !important;
 	}
 	.table-form td {
 		padding: 10px;
