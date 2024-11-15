@@ -17,6 +17,9 @@
 
 	$sql = " INSERT INTO member_join ( id, pw, name, nickname, addr, phone, email, agree_sms, agree_email, authority, level, cur_date) VALUES ('$id', '$pwd', '$name', '$nickname', '$addr', '$phone', '$email', '$agree_sms', '$agree_email', '2', '9', now()) ";
 
+echo $sql;
+exit;
+
 	mysqli_query($mysqli, $sql);
 	mysqli_close($mysqli);
 
